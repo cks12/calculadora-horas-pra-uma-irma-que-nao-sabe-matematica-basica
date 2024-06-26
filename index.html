@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<!DOCTYPE html>
+<html lang="pt-Br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Diferença de Horas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #5a67d8;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="time"] {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #5a67d8;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #434190;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #444;
+        }
+    </style>
+    <script>
+        function calcularDiferenca() {
+            var hora1 = document.getElementById("hora1").value;
+            var hora2 = document.getElementById("hora2").value;
+            var date1 = new Date("1970-01-01T" + hora1 + "Z");
+            var date2 = new Date("1970-01-01T" + hora2 + "Z");
+            var diff = Math.abs(date2 - date1);
+            var diffHoras = Math.floor(diff / (1000 * 60 * 60));
+            var diffMinutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("resultado").innerHTML = diffHoras + " horas e " + diffMinutos + " minutos";
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Calculadora de Diferença de Horas</h2>
+        <label for="hora1">Hora 1:</label>
+        <input type="time" id="hora1" required>
+        <label for="hora2">Hora 2:</label>
+        <input type="time" id="hora2" required>
+        <button onclick="calcularDiferenca()">Calcular Diferença</button>
+        <div id="resultado"></div>
+        <p>Feito com 💜 pra uma irmã que não sabe matematica basica</p>
+    </div>
+</body>
+
+</html>
